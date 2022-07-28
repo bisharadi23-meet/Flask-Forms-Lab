@@ -9,8 +9,11 @@
 
 </head>
 <body>
-
-
+{% if n in facebook_fiends %}
+<h1 style="color: pink;"> {{n}} is your friend </h1>
+{% else %}
+<h1 style="color: pink;"> {{n}} is not your friend </h1>
+{% endif %}
 
 </body>
 </html>

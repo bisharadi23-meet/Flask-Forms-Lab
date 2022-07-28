@@ -21,8 +21,6 @@ def login():
 	if request.method == 'POST':
 		name = request.form['username']
 		passw = request.form['password']
-
-
 		print("we are inside post")
 		print(name)
 		print(passw)
@@ -30,13 +28,16 @@ def login():
 			return redirect(url_for('home'))
 		else :
 			return render_template('login.html')
-  
+	
 @app.route('/home')  # '/' for the default page
 def home():
-	return render_template('home.html')
+	return render_template('home.html' , friends = facebook_friends)
 	
+@app.route('/friend_exists''/<string:name>', methods=['GET', 'POST'])  # '/' for the default page
+def friend_exist(name):
+	return render_template('friend_exists.html' , n = name, facebook_friends = facebook_friends)
 
 if __name__ == "__main__":  # Makes sure this is the main process
 	app.run( # Starts the site
-    debug=True
+	debug=True
 	)
